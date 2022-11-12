@@ -1,0 +1,26 @@
+{
+  "name": "organbase",
+  "version": "1.0.0",
+  "description": "A simple project to organ donation management",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PedroRosa-Gif/organBase.git"
+  },
+  "author": "Pedro Rosa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PedroRosa-Gif/organBase/issues"
+  },
+  "homepage": "https://github.com/PedroRosa-Gif/organBase#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mariadb": "^3.0.2",
+    "nodemon": "^2.0.20"
+  }
+}

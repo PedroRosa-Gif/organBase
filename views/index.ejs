@@ -2,81 +2,92 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Organ Base</title>
-    <link rel="stylesheet" type="text/css" href="/css/index.css" media="screen" />
+  <meta charset="UTF-8">
+  <title>Organ Base</title>
+  <link rel="stylesheet" type="text/css" href="/css/index.css" media="screen" />
 </head>
 <script>
-    function handleSearch() {
-        const search = document.getElementById('search').value;
-        window.location.href = "/getPatient/" + search;
-    }
+  function handleSearch() {
+    const search = document.getElementById('search').value;
+    if (search !== '')
+      window.location.href = "/getPatient/" + search;
+    else
+      window.location.href = "/";
+  }
 </script>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="div_title_header">
-                <t1>Organ Base</t1>
-            </div>
-        </div>
-        <div class="body">
-            <div class="inner_body">
-                <div class="title_inner_body">
-                    <t1>
-                        <%= title %>
-                    </t1>
-                </div>
-                <div class="div_querys">
-                    <a href="/">Relação de Usuários com Doadores</a>
-                    <a href="/donorHospital">Consulta 2</a>
-                    <a href="/organCity">Consulta 3</a>
-                    <a href="/organHospital">Consulta 4</a>
-                    <a href="/bloodAmount">Consulta 5</a>
-                    <a href="/priorityAmount">Consulta 6</a>
-                </div>
-                <div class="div_search">
-                    <div class="div_field_search">
-                        <input type="text" placeholder="Pesquisar..." id="search"></input>
-                        <button type="button" onclick="handleSearch()">Buscar</button>
-                    </div>
-                </div>
-                <div class="div_result_query">
-                    <table>
-                        <tr class="row_table_result">
-                            <% fields.forEach((field)=> { %>
-                                <th>
-                                    <%= field %>
-                                </th>
-                                <% }); %>
-                        </tr>
-                        <% data.forEach((reg)=> { %>
-                            <% const data=new Date(reg['Data da Doação']); %>
-                                <% const dataStr=`${data.getDate()}/${data.getMonth()}/${data.getFullYear()}`; %>
-                                    <tr class="row_table_result">
-                                        <% fields.forEach((field)=> { %>
-                                            <% if (field==='Data da Doação' && reg['Data da Doação'] !==undefined) {%>
-                                                <td>
-                                                    <%= dataStr %>
-                                                </td>
-                                                <%} else {%>
-                                                    <td>
-                                                        <%= reg[field] %>
-                                                    </td>
-                                                    <%}}); %>
-                                    </tr>
-                                    <% }); %>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="div_text_footer">
-                <p class="upper_text_footer">Desenvolvido por Equipe OrganBase TI LTDA</p>
-                <p class="down_text_footer">Todos os Direitos Reservados © Copyright</p>
-            </div>
-        </div>
+  <div class="container">
+    <div class="header">
+      <div class="div_title_header">
+        <t1>Organ Base</t1>
+      </div>
     </div>
+    <div class="body">
+      <div class="inner_body">
+        <div class="title_inner_body">
+          <t1>
+            <%= title %>
+          </t1>
+        </div>
+        <div class="div_querys">
+          <t3>Consultas por relação:</t3>
+          <div class="div_align_querys">
+            <a href="/">Usuários Doadores</a>
+            <a href="/donorHospital">Doadores Hospitais</a>
+            <a href="/organCity">Órgãos por Cidade</a>
+            <a href="/organHospital">Órgãos Hospitais</a>
+            <a href="/bloodAmount">Quantidade Sangue</a>
+            <a href="/priorityAmount">Pacientes Prioridade</a>
+          </div>
+        </div>
+        <div class="div_search">
+          <div class="div_field_search">
+            <input type="text" placeholder="Pesquisar..." id="search"></input>
+            <button type="button" onclick="handleSearch()">Buscar</button>
+          </div>
+        </div>
+        <div class="div_result_query">
+          <table>
+            <tr class="row_table_result">
+              <% fields.forEach((field)=> { %>
+                <th>
+                  <%= field %>
+                </th>
+                <% }); %>
+            </tr>
+            <% data.forEach((reg)=> { %>
+              <% const data=new Date(reg['Data da Doação']); %>
+              <% const dataStr=`${data.getDate()}/${data.getMonth()}/${data.getFullYear()}`; %>
+              <tr class="row_table_result">
+                <% fields.forEach((field)=> { %>
+                <% if (field==='Data da Doação' && reg['Data da Doação'] !==undefined) {%>
+                  <td>
+                    <%= dataStr %>
+                  </td>
+                <%} else {%>
+                  <td>
+                    <%= reg[field] %>
+                  </td>
+                <%}}); %>
+              </tr>
+            <% }); %>
+            <tr class="row_table_result">
+              <% fields.forEach((field)=> { %>
+                <td></td>
+              <% }); %>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="div_text_footer">
+        <p class="upper_text_footer">Desenvolvido por Equipe OrganBase TI LTDA</p>
+        <p class="down_text_footer">Todos os Direitos Reservados © Copyright</p>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

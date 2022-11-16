@@ -30,3 +30,11 @@ Assim é possivel executar o projeto localmente. Depois que instalar as dependen
 ```
 
 O terminal retorna o status da execução, dizendo se algum erro aconteceu ou não, você pode acessar o projeto na sua URL local, localhost:3001. Lembre-se também de que é necessário alterar as credenciais do banco de dados, como está sendo executado localmente, você precisará colocar as informações do seu banco de dados no arquivo .env, há um exemplo deixado no repositório, o arquivo .env-example para a instanciação das variáveis de ambiente. Na pasta 'database' estão os comandos SQL para a construção e população do banco, execute eles antes de rodar. Com isso a aplicação estará disponível para uso.
+
+## Link para a aplicação hospedada
+
+Caso queria acessar a aplicação em um lugar já hospedado, abaixo segue o link:
+
+```bash
+  https://organ-base.vercel.app/
+```

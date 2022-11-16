@@ -11,6 +11,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 app.use(express.static(__dirname + '/public'));
 
+app.set("port", process.env.PORT || 3001);
+
 // Rota que disponibiliza a consulta da relação de Paciente com Doador
 app.get("/", async (req, res) => {
     try {

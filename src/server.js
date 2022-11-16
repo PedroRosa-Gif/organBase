@@ -1,10 +1,5 @@
 const express = require('express');
-const dotenv = require('dotenv');
 const path = require('path');
-
-dotenv.config({ path: '.env' });
-
-const PORT = process.env.PORT || '3001';
 
 const pool = require('./config/database');
 
@@ -15,10 +10,6 @@ app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 app.use(express.static(__dirname + '/public'));
-
-app.listen(PORT, () => {
-    console.log(`Listening ${PORT} port`);
-})
 
 // Rota que disponibiliza a consulta da relação de Paciente com Doador
 app.get("/", async (req, res) => {
@@ -132,3 +123,5 @@ app.get("/priorityAmount", async (req, res) => {
         res.status(400).send(error.message);
     }
 });
+
+module.exports = app;
